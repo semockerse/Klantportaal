@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weekrapport Brandfirm — 18 t/m 24 mei 2026</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f0f4ff; color: #1a1a2e; min-height: 100vh; }
+
+    .header { background: linear-gradient(135deg, #0d1b3e 0%, #1a2d6e 100%); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; top: -60px; right: -60px; width: 240px; height: 240px; background: rgba(99,140,255,0.08); border-radius: 50%; }
+    .header-inner { max-width: 900px; margin: 0 auto; padding: 32px 40px 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .header-left { display: flex; flex-direction: column; gap: 6px; }
+    .logo-row { display: flex; align-items: center; gap: 12px; }
+    .logo-sf { background: #3b6bff; color: #fff; font-weight: 800; font-size: 13px; letter-spacing: 0.5px; padding: 6px 12px; border-radius: 8px; text-transform: uppercase; }
+    .logo-x { color: rgba(255,255,255,0.3); font-size: 18px; }
+    .logo-client { background: linear-gradient(135deg, #ff6b00, #ff9d3d); color: #fff; font-weight: 800; font-size: 13px; letter-spacing: 0.5px; padding: 6px 14px; border-radius: 8px; text-transform: uppercase; }
+    .header-subtitle { color: rgba(255,255,255,0.5); font-size: 13px; margin-top: 2px; }
+    .period-badge { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 12px 20px; text-align: right; }
+    .period-label { color: rgba(255,255,255,0.45); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+    .period-value { color: #fff; font-size: 15px; font-weight: 600; margin-top: 4px; }
+
+    .content { max-width: 900px; margin: 0 auto; padding: 36px 40px 60px; }
+    .section-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; font-weight: 700; margin-bottom: 14px; }
+
+    .commentaar-card { background: linear-gradient(135deg, #0d1b3e 0%, #1a2d6e 100%); border-radius: 14px; padding: 26px 30px; margin-bottom: 24px; position: relative; overflow: hidden; }
+    .commentaar-card::before { content: '"'; position: absolute; top: -10px; left: 20px; font-size: 120px; color: rgba(255,255,255,0.05); font-family: Georgia, serif; line-height: 1; }
+    .commentaar-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .commentaar-header span { color: rgba(255,255,255,0.5); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+    .commentaar-dot { width: 8px; height: 8px; background: #3b6bff; border-radius: 50%; }
+    .commentaar-text { color: rgba(255,255,255,0.88); font-size: 15px; line-height: 1.75; }
+    .commentaar-highlight { display: inline; background: rgba(255,107,0,0.25); border-radius: 4px; padding: 1px 5px; }
+    .commentaar-author { margin-top: 16px; display: flex; align-items: center; gap: 10px; }
+    .author-avatar { width: 32px; height: 32px; border-radius: 50%; background: #3b6bff; color: #fff; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+    .author-name { color: rgba(255,255,255,0.6); font-size: 13px; }
+    .author-name strong { color: #fff; }
+
+    .highlight-wrap { display: grid; grid-template-columns: 1fr 300px; gap: 16px; margin-bottom: 24px; align-items: stretch; }
+    .highlight-bar { background: linear-gradient(135deg, #ff6b00 0%, #ff9d3d 100%); border-radius: 14px; padding: 24px 28px; display: flex; align-items: center; gap: 20px; box-shadow: 0 8px 24px rgba(255,107,0,0.25); }
+    .highlight-icon { font-size: 36px; flex-shrink: 0; }
+    .highlight-text h2 { color: #fff; font-size: 17px; font-weight: 700; }
+    .highlight-text p { color: rgba(255,255,255,0.85); font-size: 13px; margin-top: 3px; }
+    .appt-types { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+    .appt-type-badge { background: rgba(255,255,255,0.2); color: #fff; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+    .highlight-num { margin-left: auto; text-align: center; flex-shrink: 0; }
+    .highlight-num .big { color: #fff; font-size: 52px; font-weight: 800; line-height: 1; }
+    .highlight-num .small { color: rgba(255,255,255,0.75); font-size: 13px; margin-top: 2px; }
+
+    .doelmeter-card { background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: center; }
+    .doelmeter-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; color: #94a3b8; font-weight: 700; margin-bottom: 8px; }
+    .doelmeter-title { font-size: 15px; font-weight: 700; color: #1a1a2e; margin-bottom: 14px; }
+    .doelmeter-track { height: 14px; background: #f1f5f9; border-radius: 99px; overflow: hidden; margin-bottom: 10px; }
+    .doelmeter-fill { height: 100%; width: 50%; background: linear-gradient(90deg, #ff6b00, #ff9d3d); border-radius: 99px; position: relative; }
+    .doelmeter-fill::after { content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: 4px; background: rgba(255,255,255,0.5); border-radius: 99px; }
+    .doelmeter-stats { display: flex; justify-content: space-between; align-items: center; }
+    .doelmeter-stats .pct { font-size: 22px; font-weight: 800; color: #ff6b00; }
+    .doelmeter-stats .frac { font-size: 13px; color: #64748b; }
+    .doelmeter-stats .remaining { font-size: 12px; color: #94a3b8; text-align: right; }
+    .quality-note { margin-top: 12px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 8px 12px; font-size: 12px; color: #166534; display: flex; align-items: flex-start; gap: 6px; line-height: 1.5; }
+
+    .pipeline-card { background: #fff; border-radius: 14px; padding: 22px 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); margin-bottom: 24px; display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; border-top: 4px solid #3b6bff; }
+    .pipeline-item { text-align: center; }
+    .pipeline-num { font-size: 32px; font-weight: 800; color: #1a1a2e; line-height: 1; }
+    .pipeline-num.orange { color: #ff6b00; }
+    .pipeline-label { font-size: 12px; color: #64748b; margin-top: 5px; line-height: 1.4; }
+
+    .kpi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 24px; }
+    .kpi-card { background: #fff; border-radius: 14px; padding: 22px 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); border-top: 4px solid transparent; }
+    .kpi-card.blue  { border-top-color: #3b6bff; }
+    .kpi-card.navy  { border-top-color: #1a2d6e; }
+    .kpi-card.green { border-top-color: #22c55e; }
+    .kpi-card.amber { border-top-color: #f59e0b; }
+    .kpi-card.slate { border-top-color: #94a3b8; }
+    .kpi-card.red   { border-top-color: #ef4444; }
+    .kpi-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; color: #94a3b8; font-weight: 600; }
+    .kpi-value { font-size: 38px; font-weight: 800; color: #1a1a2e; line-height: 1.1; margin-top: 6px; }
+    .kpi-sub { font-size: 13px; color: #64748b; margin-top: 4px; }
+
+    .results-card { background: #fff; border-radius: 14px; padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); margin-bottom: 24px; }
+    .results-card h3 { font-size: 16px; font-weight: 700; color: #1a1a2e; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+    .results-group { margin-bottom: 20px; }
+    .group-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 700; margin-bottom: 10px; padding: 4px 10px; border-radius: 6px; display: inline-block; }
+    .group-label.opvolging { background: #eff6ff; color: #3b6bff; }
+    .group-label.positief  { background: #f0fdf4; color: #16a34a; }
+    .group-label.negatief  { background: #fef2f2; color: #dc2626; }
+    .group-label.neutraal  { background: #f8fafc; color: #64748b; }
+    .result-row { display: flex; align-items: center; gap: 12px; padding: 9px 0; border-bottom: 1px solid #f1f5f9; }
+    .result-row:last-child { border-bottom: none; }
+    .result-name { flex: 1; font-size: 14px; color: #334155; }
+    .result-bar-wrap { width: 160px; height: 8px; background: #f1f5f9; border-radius: 99px; overflow: hidden; flex-shrink: 0; }
+    .result-bar { height: 100%; border-radius: 99px; }
+    .result-count { font-size: 14px; font-weight: 700; color: #1a1a2e; width: 36px; text-align: right; flex-shrink: 0; }
+    .result-pct { font-size: 12px; color: #94a3b8; width: 42px; text-align: right; flex-shrink: 0; }
+    .subtotaal-row { display: flex; justify-content: space-between; padding: 8px 0 4px; font-size: 13px; font-weight: 600; color: #64748b; border-top: 1px dashed #e2e8f0; margin-top: 4px; }
+    .divider { height: 1px; background: #e2e8f0; margin: 20px 0; }
+
+    .footer { background: #0d1b3e; padding: 24px 40px; text-align: center; }
+    .footer-inner { max-width: 900px; margin: 0 auto; }
+    .footer p { color: rgba(255,255,255,0.35); font-size: 12px; margin-top: 6px; }
+    .footer-brand { color: #3b6bff; font-weight: 700; font-size: 13px; }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="logo-row">
+        <span class="logo-sf">SalesFusion</span>
+        <span class="logo-x">×</span>
+        <span class="logo-client">Brandfirm</span>
+      </div>
+      <div class="header-subtitle">Wekelijks belrapport — Performance Marketing campagne</div>
+    </div>
+    <div class="period-badge">
+      <div class="period-label">Rapportageperiode</div>
+      <div class="period-value">18 – 24 mei 2026 · Week 21</div>
+    </div>
+  </div>
+</header>
+
+<main class="content">
+
+  <div class="section-title">Weekcommentaar</div>
+  <div class="commentaar-card">
+    <div class="commentaar-header">
+      <div class="commentaar-dot"></div>
+      <span>Terugblik op de week</span>
+    </div>
+    <div class="commentaar-text">
+      Deze week hebben we 5 afspraken kunnen inplannen voor Brandfirm. Het weekdoel van 10 afspraken is daarmee niet gehaald, en dat willen we de komende week beter doen. Positief punt is dat we deze week zijn gestart met de GEO masterclass-lijst die we van Brandfirm hebben ontvangen — mensen die zich actief hebben aangemeld voor jullie masterclass. Dat die lijst direct 3 afspraken opleverde is dan ook logisch: het zijn warme contacten die Brandfirm al kennen en er bewust voor hebben gekozen zich in te schrijven. Daarnaast hebben we 29 openstaande terugbelafspraken die we komende week oppakken. We hebben dus genoeg materiaal om er een sterkere week van te maken.
+    </div>
+    <div class="commentaar-author">
+      <div class="author-avatar">S</div>
+      <div class="author-name"><strong>Sem</strong> — SalesFusion</div>
+    </div>
+  </div>
+
+  <div class="section-title">Afspraken deze week</div>
+  <div class="highlight-wrap">
+    <div class="highlight-bar">
+      <div class="highlight-icon">🎯</div>
+      <div class="highlight-text">
+        <h2>Afspraken gemaakt</h2>
+        <p>Ingeplande afspraken voor Brandfirm</p>
+        <div class="appt-types">
+          <span class="appt-type-badge">🖥 5× Online</span>
+          <span class="appt-type-badge">3 uit GEO masterclass-lijst</span>
+        </div>
+      </div>
+      <div class="highlight-num">
+        <div class="big">5</div>
+        <div class="small">afspraken</div>
+      </div>
+    </div>
+    <div class="doelmeter-card">
+      <div class="doelmeter-label">Weekdoel</div>
+      <div class="doelmeter-title">5 van 10 afspraken behaald</div>
+      <div class="doelmeter-track">
+        <div class="doelmeter-fill"></div>
+      </div>
+      <div class="doelmeter-stats">
+        <div>
+          <div class="pct">50%</div>
+          <div class="frac">van het weekdoel</div>
+        </div>
+        <div class="remaining">Nog 5 afspraken<br>voor 100%</div>
+      </div>
+      <div class="quality-note">
+        ✅ 3 afspraken uit GEO masterclass-inschrijvingen van Brandfirm.
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">Weekoverzicht in cijfers</div>
+  <div class="kpi-grid">
+    <div class="kpi-card blue">
+      <div class="kpi-label">Contactpogingen</div>
+      <div class="kpi-value">353</div>
+      <div class="kpi-sub">18 t/m 24 mei</div>
+    </div>
+    <div class="kpi-card navy">
+      <div class="kpi-label">Leads bereikt</div>
+      <div class="kpi-value">51</div>
+      <div class="kpi-sub">Daadwerkelijk gesproken</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="kpi-label">Conversie</div>
+      <div class="kpi-value">10<span style="font-size:22px;font-weight:600">%</span></div>
+      <div class="kpi-sub">Afspraken / bereikt</div>
+    </div>
+    <div class="kpi-card amber">
+      <div class="kpi-label">Terugbelafspraken</div>
+      <div class="kpi-value">29</div>
+      <div class="kpi-sub">Warm opvolgen</div>
+    </div>
+    <div class="kpi-card slate">
+      <div class="kpi-label">Brochure verstuurd</div>
+      <div class="kpi-value">7</div>
+      <div class="kpi-sub">Op verzoek gemaild</div>
+    </div>
+    <div class="kpi-card red">
+      <div class="kpi-label">Geen interesse</div>
+      <div class="kpi-value">40</div>
+      <div class="kpi-sub">Definitief afgehandeld</div>
+    </div>
+  </div>
+
+  <div class="results-card">
+    <h3>📊 Gespreksresultaten — volledig overzicht</h3>
+
+    <div class="results-group">
+      <span class="group-label opvolging">Opvolging (standaard)</span>
+      <div class="result-row"><span class="result-name">Geen gehoor</span><div class="result-bar-wrap"><div class="result-bar" style="width:52%;background:#cbd5e1;"></div></div><span class="result-count">185</span><span class="result-pct">52.4%</span></div>
+      <div class="result-row"><span class="result-name">Voicemail</span><div class="result-bar-wrap"><div class="result-bar" style="width:11%;background:#94a3b8;"></div></div><span class="result-count">40</span><span class="result-pct">11.3%</span></div>
+      <div class="result-row"><span class="result-name">In gesprek</span><div class="result-bar-wrap"><div class="result-bar" style="width:3%;background:#3b6bff;"></div></div><span class="result-count">10</span><span class="result-pct">2.8%</span></div>
+      <div class="subtotaal-row"><span>Subtotaal</span><span>235</span></div>
+    </div>
+
+    <div class="results-group">
+      <span class="group-label opvolging">Opvolging (met actie)</span>
+      <div class="result-row"><span class="result-name">Terugbelafspraak</span><div class="result-bar-wrap"><div class="result-bar" style="width:8%;background:#f59e0b;"></div></div><span class="result-count">29</span><span class="result-pct">8.2%</span></div>
+      <div class="result-row"><span class="result-name">Brochure mailen</span><div class="result-bar-wrap"><div class="result-bar" style="width:2%;background:#fcd34d;"></div></div><span class="result-count">7</span><span class="result-pct">2.0%</span></div>
+      <div class="subtotaal-row"><span>Subtotaal</span><span>36</span></div>
+    </div>
+
+    <div class="results-group">
+      <span class="group-label positief">Afgehandeld positief</span>
+      <div class="result-row"><span class="result-name">Afspraak Online</span><div class="result-bar-wrap"><div class="result-bar" style="width:1%;background:#ff6b00;"></div></div><span class="result-count">5</span><span class="result-pct">1.4%</span></div>
+      <div class="subtotaal-row"><span>Subtotaal</span><span>5</span></div>
+    </div>
+
+    <div class="results-group">
+      <span class="group-label negatief">Afgehandeld negatief</span>
+      <div class="result-row"><span class="result-name">Geen interesse</span><div class="result-bar-wrap"><div class="result-bar" style="width:11%;background:#fca5a5;"></div></div><span class="result-count">40</span><span class="result-pct">11.3%</span></div>
+      <div class="result-row"><span class="result-name">Buiten doelgroep</span><div class="result-bar-wrap"><div class="result-bar" style="width:3%;background:#fca5a5;"></div></div><span class="result-count">11</span><span class="result-pct">3.1%</span></div>
+      <div class="result-row"><span class="result-name">Concurrent</span><div class="result-bar-wrap"><div class="result-bar" style="width:1%;background:#f87171;"></div></div><span class="result-count">2</span><span class="result-pct">0.6%</span></div>
+      <div class="result-row"><span class="result-name">Buitenland</span><div class="result-bar-wrap"><div class="result-bar" style="width:1%;background:#fca5a5;"></div></div><span class="result-count">2</span><span class="result-pct">0.6%</span></div>
+      <div class="subtotaal-row"><span>Subtotaal</span><span>55</span></div>
+    </div>
+
+    <div class="results-group">
+      <span class="group-label neutraal">Afgehandeld neutraal</span>
+      <div class="result-row"><span class="result-name">Foutief nummer</span><div class="result-bar-wrap"><div class="result-bar" style="width:5%;background:#e2e8f0;"></div></div><span class="result-count">19</span><span class="result-pct">5.4%</span></div>
+      <div class="result-row"><span class="result-name">Bedrijf bestaat niet meer</span><div class="result-bar-wrap"><div class="result-bar" style="width:1%;background:#e2e8f0;"></div></div><span class="result-count">3</span><span class="result-pct">0.8%</span></div>
+      <div class="subtotaal-row"><span>Subtotaal</span><span>22</span></div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="subtotaal-row" style="font-size:15px;font-weight:800;color:#1a1a2e;">
+      <span>Totaal contactpogingen</span><span>353</span>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">SalesFusion</div>
+    <p>Dit rapport is automatisch gegenereerd · Week 21, 2026 · Vragen? Neem contact op via je accountmanager</p>
+  </div>
+</footer>
+
+</body>
+</html>
