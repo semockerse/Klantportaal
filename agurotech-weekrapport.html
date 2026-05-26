@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Weekrapport AguroTech — 18–24 mei 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f4f8; color: #1a1a2e; }
+
+    /* HEADER */
+    .header {
+      background: linear-gradient(135deg, #0d1b3e 0%, #1a2d6e 100%);
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .header-logos { display: flex; align-items: center; gap: 14px; }
+    .logo-sf {
+      font-weight: 800;
+      font-size: 20px;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+    .logo-sep { color: rgba(255,255,255,0.4); font-size: 22px; }
+    .logo-client {
+      background: linear-gradient(135deg, #1e7e34, #2ecc71);
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 6px 16px;
+      border-radius: 20px;
+    }
+    .period-badge {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      font-size: 13px;
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* CONTENT */
+    .content { max-width: 860px; margin: 0 auto; padding: 32px 20px 48px; }
+
+    /* WEEKCOMMENTAAR */
+    .commentaar-card {
+      background: linear-gradient(135deg, #0d1b3e 0%, #1a2d6e 100%);
+      color: #fff;
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 24px;
+    }
+    .commentaar-card h2 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 12px;
+    }
+    .commentaar-card p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.9);
+    }
+    .commentaar-author {
+      margin-top: 16px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      font-style: italic;
+    }
+
+    /* HIGHLIGHT (full-width, geen weekdoel) */
+    .highlight-bar {
+      background: linear-gradient(135deg, #1e7e34, #2ecc71);
+      border-radius: 16px;
+      padding: 28px 36px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .highlight-left h3 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 6px;
+    }
+    .highlight-num {
+      font-size: 64px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+    }
+    .highlight-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+      margin-top: 4px;
+    }
+    .highlight-right {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .hl-stat { text-align: center; }
+    .hl-stat .hl-val {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .hl-stat .hl-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.75);
+      margin-top: 2px;
+    }
+
+    /* KPI GRID */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .kpi-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px 18px;
+      border-top: 4px solid #3b6bff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .kpi-card .kpi-val {
+      font-size: 32px;
+      font-weight: 800;
+      color: #1a1a2e;
+      line-height: 1;
+    }
+    .kpi-card .kpi-label {
+      font-size: 12px;
+      color: #888;
+      margin-top: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    /* RESULTS */
+    .results-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px 32px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .results-card h2 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #1a1a2e;
+    }
+    .results-group {
+      margin-bottom: 24px;
+    }
+    .results-group-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #aaa;
+      margin-bottom: 10px;
+    }
+    .result-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .result-label {
+      font-size: 13px;
+      color: #444;
+      width: 200px;
+      flex-shrink: 0;
+    }
+    .result-bar-wrap {
+      flex: 1;
+      height: 8px;
+      background: #f0f0f0;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .result-bar {
+      height: 100%;
+      border-radius: 4px;
+      background: #3b6bff;
+    }
+    .result-bar.green { background: linear-gradient(90deg, #1e7e34, #2ecc71); }
+    .result-bar.orange { background: #f59e0b; }
+    .result-bar.red { background: #ef4444; }
+    .result-bar.gray { background: #9ca3af; }
+    .result-count {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1a1a2e;
+      width: 32px;
+      text-align: right;
+    }
+    .result-pct { display: none; }
+
+    /* FOOTER */
+    .footer {
+      background: #0d1b3e;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+    }
+    .footer strong { color: rgba(255,255,255,0.8); }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-logos">
+    <span class="logo-sf">SalesFusion</span>
+    <span class="logo-sep">×</span>
+    <span class="logo-client">AguroTech</span>
+  </div>
+  <div class="period-badge">📅 18–24 mei 2026 &nbsp;·&nbsp; Week 21</div>
+</header>
+
+<main class="content">
+
+  <!-- WEEKCOMMENTAAR -->
+  <div class="commentaar-card">
+    <h2>Weekcommentaar</h2>
+    <p>
+      Wat een fantastische week! Met maar liefst 14 ingeplande afspraken hebben we een uitstekend resultaat neergezet voor AguroTech.
+      De 905 contactpogingen hebben geleid tot maar liefst 14 afspraken deze week.
+      Naast de afspraken liggen er nog 67 terugbelafspraken klaar voor komende week, wat een mooie pipeline oplevert om verder op te bouwen.
+      We zijn erg tevreden over dit resultaat en kijken vol vertrouwen uit naar de vervolgweek.
+    </p>
+    <div class="commentaar-author">— Melle, SalesFusion</div>
+  </div>
+
+  <!-- HIGHLIGHT (geen weekdoel → full-width) -->
+  <div class="highlight-bar">
+    <div class="highlight-left">
+      <h3>Afspraken deze week</h3>
+      <div class="highlight-num">14</div>
+      <div class="highlight-sub">13 fysiek &nbsp;·&nbsp; 1 online</div>
+    </div>
+    <div class="highlight-right">
+      <div class="hl-stat">
+        <div class="hl-val">905</div>
+        <div class="hl-label">Pogingen</div>
+      </div>
+      <div class="hl-stat">
+        <div class="hl-val">67</div>
+        <div class="hl-label">Terugbel</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPI GRID -->
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-val">905</div>
+      <div class="kpi-label">Contactpogingen</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val">27</div>
+      <div class="kpi-label">In gesprek</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val">67</div>
+      <div class="kpi-label">Terugbelafspraken</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val">9</div>
+      <div class="kpi-label">Info-verzoeken</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val">112</div>
+      <div class="kpi-label">Geen interesse</div>
+    </div>
+  </div>
+
+  <!-- RESULTATEN -->
+  <div class="results-card">
+    <h2>Volledig gespreksresultaten</h2>
+
+    <div class="results-group">
+      <div class="results-group-title">✅ Afgehandeld positief</div>
+      <div class="result-row">
+        <span class="result-label">Afspraak fysiek</span>
+        <div class="result-bar-wrap"><div class="result-bar green" style="width:1.4%"></div></div>
+        <span class="result-count">13</span>
+        <span class="result-pct">1.4%</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Afspraak online</span>
+        <div class="result-bar-wrap"><div class="result-bar green" style="width:0.1%"></div></div>
+        <span class="result-count">1</span>
+        <span class="result-pct">0.1%</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Is al klant</span>
+        <div class="result-bar-wrap"><div class="result-bar green" style="width:0.2%"></div></div>
+        <span class="result-count">2</span>
+        <span class="result-pct">0.2%</span>
+      </div>
+    </div>
+
+    <div class="results-group">
+      <div class="results-group-title">🔄 Opvolging</div>
+      <div class="result-row">
+        <span class="result-label">Geen gehoor</span>
+        <div class="result-bar-wrap"><div class="result-bar" style="width:54.1%"></div></div>
+        <span class="result-count">490</span>
+        <span class="result-pct">54.1%</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">In gesprek</span>
+        <div class="result-bar-wrap"><div class="result-bar" style="width:3.0%"></div></div>
+        <span class="result-count">27</span>
+        <span class="result-pct">3.0%</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Voicemail</span>
+        <div class="result-bar-wrap"><div class="result-bar" style="width:3.0%"></div></div>
+        <span class="result-count">27</span>
+        <span class="result-pct">3.0%</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Terugbelafspraak</span>
+        <div class="result-bar-wrap"><div class="result-bar orange" style="width:7.4%"></div></div>
+        <span class="result-count">67</span>
+        <span class="result-pct">7.4%</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Informatie verzoek</span>
+        <div class="result-bar-wrap"><div class="result-bar orange" style="width:1.0%"></div></div>
+        <span class="result-count">9</span>
+        <span class="result-pct">1.0%</span>
+      </div>
+    </div>
+
+    <div class="results-group">
+      <div class="results-group-title">❌ Afgehandeld negatief</div>
+      <div class="result-row">
+        <span class="result-label">Geen interesse</span>
+        <div class="result-bar-wrap"><div class="result-bar red" style="width:12.4%"></div></div>
+        <span class="result-count">112</span>
+        <span class="result-pct">12.4%</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Geen medewerking</span>
+        <div class="result-bar-wrap"><div class="result-bar red" style="width:0.4%"></div></div>
+        <span class="result-count">4</span>
+        <span class="result-pct">0.4%</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Te duur</span>
+        <div class="result-bar-wrap"><div class="result-bar red" style="width:0.2%"></div></div>
+        <span class="result-count">2</span>
+        <span class="result-pct">0.2%</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Is een handelsbedrijf</span>
+        <div class="result-bar-wrap"><div class="result-bar red" style="width:0.2%"></div></div>
+        <span class="result-count">2</span>
+        <span class="result-pct">0.2%</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Buiten doelgroep</span>
+        <div class="result-bar-wrap"><div class="result-bar red" style="width:2.2%"></div></div>
+        <span class="result-count">20</span>
+        <span class="result-pct">2.2%</span>
+      </div>
+    </div>
+
+    <div class="results-group">
+      <div class="results-group-title">⚪ Afgehandeld neutraal</div>
+      <div class="result-row">
+        <span class="result-label">Foutief nummer</span>
+        <div class="result-bar-wrap"><div class="result-bar gray" style="width:2.0%"></div></div>
+        <span class="result-count">18</span>
+        <span class="result-pct">2.0%</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Gaat stoppen / is gestopt</span>
+        <div class="result-bar-wrap"><div class="result-bar gray" style="width:4.0%"></div></div>
+        <span class="result-count">36</span>
+        <span class="result-pct">4.0%</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Nummer gaat niet over</span>
+        <div class="result-bar-wrap"><div class="result-bar gray" style="width:8.2%"></div></div>
+        <span class="result-count">74</span>
+        <span class="result-pct">8.2%</span>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  Gegenereerd door <strong>SalesFusion</strong> &nbsp;·&nbsp; Week 21 &nbsp;·&nbsp; AguroTech campagnerapport
+</footer>
+
+</body>
+</html>
