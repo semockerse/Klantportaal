@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ROI Calculator — SalesFusion</title>
+  <style>
+    :root {
+      --brand: #FF6B35;
+      --brand-dark: #e55a24;
+      --brand-light: #fff3ee;
+      --dark: #1a1a2e;
+      --mid: #374151;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --bg: #f9fafb;
+      --white: #ffffff;
+      --green: #10b981;
+      --green-light: #ecfdf5;
+      --red: #ef4444;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--dark);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-mark {
+      width: 36px; height: 36px;
+      background: var(--brand);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 16px; color: white;
+    }
+
+    header h1 {
+      font-size: 18px; font-weight: 700; color: white;
+    }
+
+    header span {
+      font-size: 13px; color: #9ca3af; margin-left: auto;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, var(--dark) 0%, #2d1b69 100%);
+      color: white;
+      text-align: center;
+      padding: 48px 24px 56px;
+    }
+
+    .hero h2 {
+      font-size: clamp(24px, 4vw, 38px);
+      font-weight: 800;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .hero h2 span { color: var(--brand); }
+
+    .hero p {
+      font-size: 16px;
+      color: #d1d5db;
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* MAIN LAYOUT */
+    .container {
+      max-width: 900px;
+      margin: -28px auto 60px;
+      padding: 0 16px;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+
+    /* INPUT SECTION */
+    .section {
+      padding: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section:last-child { border-bottom: none; }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--brand);
+      margin-bottom: 20px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 560px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .section { padding: 24px 20px; }
+    }
+
+    .field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--mid);
+      margin-bottom: 6px;
+    }
+
+    .field .hint {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .input-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-wrap .prefix,
+    .input-wrap .suffix {
+      position: absolute;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      pointer-events: none;
+    }
+
+    .input-wrap .prefix { left: 12px; }
+    .input-wrap .suffix { right: 12px; }
+
+    .input-wrap input {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--dark);
+      transition: border-color .2s;
+      appearance: textfield;
+      -moz-appearance: textfield;
+    }
+
+    .input-wrap input::-webkit-inner-spin-button,
+    .input-wrap input::-webkit-outer-spin-button { -webkit-appearance: none; }
+
+    .input-wrap.has-prefix input { padding-left: 28px; }
+    .input-wrap.has-suffix input { padding-right: 36px; }
+
+    .input-wrap input:focus {
+      outline: none;
+      border-color: var(--brand);
+      box-shadow: 0 0 0 3px rgba(255,107,53,.12);
+    }
+
+    /* SLIDER */
+    .slider-wrap {
+      margin-top: 6px;
+    }
+
+    input[type=range] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 4px;
+      border-radius: 4px;
+      background: var(--border);
+      outline: none;
+      margin-top: 10px;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--brand);
+      cursor: pointer;
+      border: 2px solid white;
+      box-shadow: 0 1px 4px rgba(0,0,0,.2);
+    }
+
+    /* RESULTS */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 640px) {
+      .results-grid { grid-template-columns: 1fr; }
+    }
+
+    .result-card {
+      border-radius: 12px;
+      padding: 20px;
+      border: 1.5px solid var(--border);
+    }
+
+    .result-card.accent {
+      background: var(--brand-light);
+      border-color: var(--brand);
+    }
+
+    .result-card .rc-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .result-card.accent .rc-label { color: var(--brand); }
+
+    .result-card .rc-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1;
+    }
+
+    .result-card.accent .rc-value { color: var(--brand); }
+
+    .result-card .rc-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    /* SCENARIO BAR */
+    .scenario-block {
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 24px;
+      margin-top: 8px;
+    }
+
+    .scenario-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .scenario-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .bar-row {
+      margin-bottom: 16px;
+    }
+
+    .bar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .bar-label { font-size: 13px; font-weight: 600; color: var(--mid); }
+    .bar-amount { font-size: 13px; font-weight: 700; color: var(--dark); }
+
+    .bar-track {
+      height: 10px;
+      background: var(--border);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 99px;
+      transition: width .6s ease;
+    }
+
+    .bar-fill.investment { background: #6366f1; }
+    .bar-fill.revenue    { background: var(--green); }
+
+    /* ROI BADGE */
+    .roi-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 99px;
+      font-size: 15px;
+      font-weight: 700;
+      margin-top: 16px;
+    }
+
+    .roi-badge.positive { background: var(--green-light); color: var(--green); }
+    .roi-badge.negative { background: #fef2f2; color: var(--red); }
+
+    .roi-badge .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+    }
+
+    .roi-badge.positive .dot { background: var(--green); }
+    .roi-badge.negative .dot { background: var(--red); }
+
+    /* BREAKEVEN LINE */
+    .be-line {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--brand-light);
+      border: 1.5px solid var(--brand);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-top: 16px;
+    }
+
+    .be-icon {
+      width: 40px; height: 40px;
+      background: var(--brand);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 18px;
+    }
+
+    .be-text { font-size: 14px; line-height: 1.5; }
+    .be-text strong { color: var(--brand); font-size: 16px; }
+
+    /* CTA */
+    .cta-section {
+      background: linear-gradient(135deg, var(--dark), #2d1b69);
+      color: white;
+      text-align: center;
+      padding: 40px 24px;
+    }
+
+    .cta-section h3 {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .cta-section p {
+      font-size: 14px;
+      color: #9ca3af;
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--brand);
+      color: white;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 32px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background .2s, transform .1s;
+    }
+
+    .btn:hover { background: var(--brand-dark); transform: translateY(-1px); }
+
+    /* UTIL */
+    .flex-between {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    @media (max-width: 480px) {
+      .flex-between { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-mark">SF</div>
+  <h1>SalesFusion</h1>
+  <span>ROI Calculator</span>
+</header>
+
+<div class="hero">
+  <h2>Wat levert bellen op<br><span>voor jouw bedrijf?</span></h2>
+  <p>Vul jouw gegevens in en bereken direct je break-even punt en verwacht rendement bij SalesFusion.</p>
+</div>
+
+<div class="container">
+  <div class="card">
+
+    <!-- INPUTS -->
+    <div class="section">
+      <div class="section-title">📋 Jouw investering bij SalesFusion</div>
+      <div class="grid-2">
+
+        <div class="field">
+          <label>Aantal bel-uren</label>
+          <div class="hint">Totaal aantal uren dat SalesFusion belt</div>
+          <div class="input-wrap has-suffix">
+            <input type="number" id="hours" value="40" min="1" max="500" oninput="sync('hours','hoursRange'); calc()" />
+            <span class="suffix">uur</span>
+          </div>
+          <div class="slider-wrap">
+            <input type="range" id="hoursRange" min="1" max="500" value="40" oninput="sync('hoursRange','hours'); calc()" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Uurtarief SalesFusion</label>
+          <div class="hint">Prijs per uur excl. BTW</div>
+          <div class="input-wrap has-prefix has-suffix">
+            <span class="prefix">€</span>
+            <input type="number" id="rate" value="55" min="1" max="500" oninput="sync('rate','rateRange'); calc()" />
+            <span class="suffix">/uur</span>
+          </div>
+          <div class="slider-wrap">
+            <input type="range" id="rateRange" min="10" max="300" value="55" oninput="sync('rateRange','rate'); calc()" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CONVERSIE -->
+    <div class="section">
+      <div class="section-title">🎯 Jouw conversie & klantwaarde</div>
+      <div class="grid-2">
+
+        <div class="field">
+          <label>Afspraken nodig per klant</label>
+          <div class="hint">Gemiddeld aantal afspraken om 1 klant te sluiten</div>
+          <div class="input-wrap has-suffix">
+            <input type="number" id="appsPerClient" value="3" min="1" max="20" oninput="sync('appsPerClient','appsRange'); calc()" />
+            <span class="suffix">afspraken</span>
+          </div>
+          <div class="slider-wrap">
+            <input type="range" id="appsRange" min="1" max="20" value="3" oninput="sync('appsRange','appsPerClient'); calc()" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Gemiddelde klantwaarde</label>
+          <div class="hint">Omzet per gewonnen klant (bijv. eerste jaar)</div>
+          <div class="input-wrap has-prefix">
+            <span class="prefix">€</span>
+            <input type="number" id="clientValue" value="5000" min="100" max="500000" step="100" oninput="sync('clientValue','cvRange'); calc()" />
+          </div>
+          <div class="slider-wrap">
+            <input type="range" id="cvRange" min="100" max="100000" step="100" value="5000" oninput="sync('cvRange','clientValue'); calc()" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="section">
+      <div class="section-title">📊 Break-even analyse</div>
+
+      <div class="results-grid" id="resultsGrid">
+        <!-- filled by JS -->
+      </div>
+
+      <div class="be-line" id="beLine">
+        <!-- filled by JS -->
+      </div>
+    </div>
+
+    <!-- SCENARIO -->
+    <div class="section">
+      <div class="section-title">🚀 Scenario: SalesFusion minimale ratio (1 afspraak per 4 uur)</div>
+
+      <div class="scenario-block">
+        <div class="scenario-title" id="scenTitle"></div>
+        <div class="scenario-sub" id="scenSub"></div>
+
+        <div class="bar-row">
+          <div class="bar-header">
+            <span class="bar-label">Investering</span>
+            <span class="bar-amount" id="barInvAmt"></span>
+          </div>
+          <div class="bar-track"><div class="bar-fill investment" id="barInv" style="width:0%"></div></div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-header">
+            <span class="bar-label">Verwachte omzet</span>
+            <span class="bar-amount" id="barRevAmt"></span>
+          </div>
+          <div class="bar-track"><div class="bar-fill revenue" id="barRev" style="width:0%"></div></div>
+        </div>
+
+        <div id="roiBadge"></div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <h3>Klaar om te starten?</h3>
+      <p>Onze belspecialisten zorgen voor kwalitatieve afspraken — jij sluit de deals.</p>
+      <a class="btn" href="mailto:info@salesfusion.nl">Neem contact op</a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function fmt(n) {
+    return '€ ' + Math.round(n).toLocaleString('nl-NL');
+  }
+
+  function sync(fromId, toId) {
+    document.getElementById(toId).value = document.getElementById(fromId).value;
+  }
+
+  function val(id) {
+    return parseFloat(document.getElementById(id).value) || 0;
+  }
+
+  function calc() {
+    const hours        = val('hours');
+    const rate         = val('rate');
+    const appsPerClient= val('appsPerClient');
+    const clientValue  = val('clientValue');
+
+    const investment   = hours * rate;
+    const revenuePerApp= clientValue / appsPerClient;
+    const beApps       = investment / revenuePerApp;        // appointments to break even
+    const beAppsPerHour= beApps / hours;
+    const beAppsPerDay = beAppsPerHour * 8;
+    const beAppsPerWeek= beAppsPerHour * 40;
+
+    // Minimum scenario: 1 app per 4 hours
+    const minApps      = hours / 4;
+    const minClients   = minApps / appsPerClient;
+    const minRevenue   = minClients * clientValue;
+    const minROI       = ((minRevenue - investment) / investment) * 100;
+    const minProfit    = minRevenue - investment;
+
+    // --- Results cards ---
+    document.getElementById('resultsGrid').innerHTML = `
+      <div class="result-card accent">
+        <div class="rc-label">Investering</div>
+        <div class="rc-value">${fmt(investment)}</div>
+        <div class="rc-sub">${hours} uur × ${fmt(rate).replace('€ ','€ ')}/uur</div>
+      </div>
+      <div class="result-card">
+        <div class="rc-label">Break-even afspraken</div>
+        <div class="rc-value">${Math.ceil(beApps)}</div>
+        <div class="rc-sub">afspraken nodig om investering terug te verdienen</div>
+      </div>
+      <div class="result-card">
+        <div class="rc-label">Opbrengst per afspraak</div>
+        <div class="rc-value">${fmt(revenuePerApp)}</div>
+        <div class="rc-sub">bij ${appsPerClient} afspraken per klant × ${fmt(clientValue)}</div>
+      </div>
+    `;
+
+    // --- Break-even line ---
+    const bePerDay  = beAppsPerDay.toFixed(1);
+    const bePerWeek = beAppsPerWeek.toFixed(1);
+    const bePerHour = beAppsPerHour.toFixed(2);
+    document.getElementById('beLine').innerHTML = `
+      <div class="be-icon">🎯</div>
+      <div class="be-text">
+        Om break-even te draaien heb je <strong>${Math.ceil(beApps)} afspraken</strong> nodig —
+        dat is <strong>${bePerHour} per uur</strong>, <strong>${bePerDay} per dag</strong> of
+        <strong>${bePerWeek} per week</strong> gedurende de belperiode.
+      </div>
+    `;
+
+    // --- Scenario ---
+    document.getElementById('scenTitle').textContent =
+      `Bij ${hours} beluren → minimaal ${minApps} afspraken → ${minClients.toFixed(1)} nieuwe klanten`;
+    document.getElementById('scenSub').textContent =
+      `Gebaseerd op 1 afspraak per 4 uur en ${appsPerClient} afspraken per gewonnen klant.`;
+
+    document.getElementById('barInvAmt').textContent = fmt(investment);
+    document.getElementById('barRevAmt').textContent = fmt(minRevenue);
+
+    const maxBar = Math.max(investment, minRevenue);
+    document.getElementById('barInv').style.width = (investment / maxBar * 100) + '%';
+    document.getElementById('barRev').style.width = (minRevenue / maxBar * 100) + '%';
+
+    const roiSign = minROI >= 0 ? '+' : '';
+    const roiClass = minROI >= 0 ? 'positive' : 'negative';
+    const roiIcon  = minROI >= 0 ? '✅' : '⚠️';
+    document.getElementById('roiBadge').innerHTML = `
+      <div class="roi-badge ${roiClass}">
+        <span class="dot"></span>
+        ${roiIcon} ROI: ${roiSign}${minROI.toFixed(0)}% — netto ${minProfit >= 0 ? 'winst' : 'verlies'}: ${fmt(Math.abs(minProfit))}
+      </div>
+    `;
+  }
+
+  // Initial render
+  calc();
+</script>
+</body>
+</html>
