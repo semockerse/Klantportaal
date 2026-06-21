@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Weekrapport Tom Baltus — 16–20 juni 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6f4; color: #1a2e1a; }
+
+    .header {
+      background: linear-gradient(135deg, #1a3328 0%, #2d5a44 100%);
+      padding: 28px 40px; display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .header-logos { display: flex; align-items: center; gap: 14px; }
+    .logo-sf { font-weight: 800; font-size: 20px; color: #fff; letter-spacing: 1px; }
+    .logo-sep { color: rgba(255,255,255,0.4); font-size: 22px; }
+    .logo-client { background: linear-gradient(135deg, #4a9e6e, #6dbf90); color: #fff; font-weight: 700; font-size: 15px; padding: 6px 16px; border-radius: 20px; }
+    .header-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+    .period-badge { background: rgba(255,255,255,0.12); color: #fff; font-size: 13px; padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); }
+    .subtitle { font-size: 12px; color: rgba(255,255,255,0.45); letter-spacing: 0.5px; }
+
+    .content { max-width: 760px; margin: 0 auto; padding: 32px 20px 48px; }
+
+    .highlight-bar { background: linear-gradient(135deg, #4a9e6e, #6dbf90); border-radius: 16px; padding: 28px 36px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .highlight-left h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.75); margin-bottom: 6px; }
+    .highlight-num { font-size: 64px; font-weight: 900; color: #fff; line-height: 1; }
+    .highlight-sub { font-size: 14px; color: rgba(255,255,255,0.8); margin-top: 4px; }
+    .highlight-right { display: flex; gap: 28px; flex-wrap: wrap; }
+    .hl-stat { text-align: center; }
+    .hl-stat .hl-val { font-size: 28px; font-weight: 800; color: #fff; }
+    .hl-stat .hl-label { font-size: 12px; color: rgba(255,255,255,0.75); margin-top: 2px; }
+
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-bottom: 24px; }
+    .kpi-card { background: #fff; border-radius: 12px; padding: 20px 18px; border-top: 4px solid #4a9e6e; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .kpi-card .kpi-val { font-size: 32px; font-weight: 800; color: #1a2e1a; line-height: 1; }
+    .kpi-card .kpi-label { font-size: 12px; color: #888; margin-top: 6px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .results-card { background: #fff; border-radius: 16px; padding: 28px 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .results-card h2 { font-size: 16px; font-weight: 700; margin-bottom: 20px; color: #1a2e1a; }
+    .results-group { margin-bottom: 22px; }
+    .results-group-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; color: #aaa; margin-bottom: 10px; }
+    .result-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .result-label { font-size: 13px; color: #444; width: 190px; flex-shrink: 0; }
+    .result-bar-wrap { flex: 1; height: 8px; background: #f0f0f0; border-radius: 4px; overflow: hidden; }
+    .result-bar { height: 100%; border-radius: 4px; background: #4a9e6e; }
+    .result-bar.amber { background: #f59e0b; }
+    .result-bar.red { background: #ef4444; }
+    .result-bar.gray { background: #9ca3af; }
+    .result-bar.light { background: #94a3b8; }
+    .result-count { font-size: 13px; font-weight: 600; color: #1a2e1a; width: 28px; text-align: right; }
+
+    .footer { background: #1a3328; color: rgba(255,255,255,0.5); text-align: center; padding: 20px; font-size: 12px; }
+    .footer strong { color: rgba(255,255,255,0.8); }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-logos">
+    <span class="logo-sf">SalesFusion</span>
+    <span class="logo-sep">×</span>
+    <span class="logo-client">Tom Baltus</span>
+  </div>
+  <div class="header-right">
+    <div class="period-badge">📅 16–20 juni 2026 · Week 25</div>
+    <div class="subtitle">Coaching campagne</div>
+  </div>
+</header>
+
+<main class="content">
+
+  <div class="highlight-bar">
+    <div class="highlight-left">
+      <h3>Afspraken gemaakt</h3>
+      <div class="highlight-num">0</div>
+      <div class="highlight-sub">14 terugbelafspraken in pipeline</div>
+    </div>
+    <div class="highlight-right">
+      <div class="hl-stat">
+        <div class="hl-val">151</div>
+        <div class="hl-label">Pogingen</div>
+      </div>
+      <div class="hl-stat">
+        <div class="hl-val">14</div>
+        <div class="hl-label">Terugbel</div>
+      </div>
+      <div class="hl-stat">
+        <div class="hl-val">23</div>
+        <div class="hl-label">Geen interesse</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-val">151</div>
+      <div class="kpi-label">Contactpogingen</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val">14</div>
+      <div class="kpi-label">Terugbelafspraken</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val">23</div>
+      <div class="kpi-label">Geen interesse</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val">1</div>
+      <div class="kpi-label">Foutief nummer</div>
+    </div>
+  </div>
+
+  <div class="results-card">
+    <h2>Gespreksresultaten</h2>
+
+    <div class="results-group">
+      <div class="results-group-title">🔄 Opvolging</div>
+      <div class="result-row">
+        <span class="result-label">Geen gehoor</span>
+        <div class="result-bar-wrap"><div class="result-bar light" style="width:49.7%"></div></div>
+        <span class="result-count">75</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Voicemail</span>
+        <div class="result-bar-wrap"><div class="result-bar light" style="width:25.2%"></div></div>
+        <span class="result-count">38</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Terugbelafspraak</span>
+        <div class="result-bar-wrap"><div class="result-bar amber" style="width:9.3%"></div></div>
+        <span class="result-count">14</span>
+      </div>
+    </div>
+
+    <div class="results-group">
+      <div class="results-group-title">✅ Afgehandeld positief</div>
+      <div class="result-row">
+        <span class="result-label">Afspraak online</span>
+        <div class="result-bar-wrap"><div class="result-bar" style="width:0%"></div></div>
+        <span class="result-count">0</span>
+      </div>
+    </div>
+
+    <div class="results-group">
+      <div class="results-group-title">❌ Afgehandeld negatief</div>
+      <div class="result-row">
+        <span class="result-label">Geen interesse</span>
+        <div class="result-bar-wrap"><div class="result-bar red" style="width:15.2%"></div></div>
+        <span class="result-count">23</span>
+      </div>
+    </div>
+
+    <div class="results-group">
+      <div class="results-group-title">⚪ Afgehandeld neutraal</div>
+      <div class="result-row">
+        <span class="result-label">Foutief nummer</span>
+        <div class="result-bar-wrap"><div class="result-bar gray" style="width:0.7%"></div></div>
+        <span class="result-count">1</span>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  Gegenereerd door <strong>SalesFusion</strong> &nbsp;·&nbsp; Week 25, 2026 &nbsp;·&nbsp; Tom Baltus campagne
+</footer>
+
+</body>
+</html>
