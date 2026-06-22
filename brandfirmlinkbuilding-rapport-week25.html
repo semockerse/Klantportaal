@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Weekrapport Brandfirm Linkbuilding — 15–19 juni 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f4f8; color: #1a1a2e; }
+
+    .header {
+      background: linear-gradient(135deg, #0d1b3e 0%, #1a2d6e 100%);
+      padding: 28px 40px; display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .header-logos { display: flex; align-items: center; gap: 14px; }
+    .logo-sf { font-weight: 800; font-size: 20px; color: #fff; letter-spacing: 1px; }
+    .logo-sep { color: rgba(255,255,255,0.4); font-size: 22px; }
+    .logo-client-wrap { display: flex; align-items: center; gap: 8px; }
+    .logo-client { background: linear-gradient(135deg, #ff6b00, #ff9d3d); color: #fff; font-weight: 700; font-size: 15px; padding: 6px 16px; border-radius: 20px; }
+    .logo-tag { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.85); font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.25); }
+    .header-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+    .period-badge { background: rgba(255,255,255,0.12); color: #fff; font-size: 13px; padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); }
+    .subtitle { font-size: 12px; color: rgba(255,255,255,0.45); letter-spacing: 0.5px; }
+
+    .content { max-width: 860px; margin: 0 auto; padding: 32px 20px 48px; }
+
+    .commentaar-card { background: linear-gradient(135deg, #0d1b3e 0%, #1a2d6e 100%); color: #fff; border-radius: 16px; padding: 28px 32px; margin-bottom: 24px; }
+    .commentaar-card h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
+    .commentaar-card p { font-size: 15px; line-height: 1.75; color: rgba(255,255,255,0.9); }
+    .commentaar-author { margin-top: 16px; font-size: 13px; color: rgba(255,255,255,0.5); font-style: italic; }
+
+    .highlight-bar { background: linear-gradient(135deg, #ff6b00, #ff9d3d); border-radius: 16px; padding: 28px 36px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .highlight-left h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.75); margin-bottom: 6px; }
+    .highlight-num { font-size: 64px; font-weight: 900; color: #fff; line-height: 1; }
+    .highlight-sub { font-size: 14px; color: rgba(255,255,255,0.75); margin-top: 4px; }
+    .highlight-right { display: flex; gap: 24px; flex-wrap: wrap; }
+    .hl-stat { text-align: center; }
+    .hl-stat .hl-val { font-size: 28px; font-weight: 800; color: #fff; }
+    .hl-stat .hl-label { font-size: 12px; color: rgba(255,255,255,0.75); margin-top: 2px; }
+
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-bottom: 24px; }
+    .kpi-card { background: #fff; border-radius: 12px; padding: 20px 18px; border-top: 4px solid #3b6bff; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .kpi-card .kpi-val { font-size: 32px; font-weight: 800; color: #1a1a2e; line-height: 1; }
+    .kpi-card .kpi-label { font-size: 12px; color: #888; margin-top: 6px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .results-card { background: #fff; border-radius: 16px; padding: 28px 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .results-card h2 { font-size: 16px; font-weight: 700; margin-bottom: 20px; color: #1a1a2e; }
+    .results-group { margin-bottom: 24px; }
+    .results-group-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; color: #aaa; margin-bottom: 10px; }
+    .result-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .result-label { font-size: 13px; color: #444; width: 200px; flex-shrink: 0; }
+    .result-bar-wrap { flex: 1; height: 8px; background: #f0f0f0; border-radius: 4px; overflow: hidden; }
+    .result-bar { height: 100%; border-radius: 4px; background: #3b6bff; }
+    .result-bar.green { background: linear-gradient(90deg, #ff6b00, #ff9d3d); }
+    .result-bar.orange { background: #f59e0b; }
+    .result-bar.red { background: #ef4444; }
+    .result-bar.gray { background: #9ca3af; }
+    .result-count { font-size: 13px; font-weight: 600; color: #1a1a2e; width: 32px; text-align: right; }
+
+    .footer { background: #0d1b3e; color: rgba(255,255,255,0.5); text-align: center; padding: 20px; font-size: 12px; }
+    .footer strong { color: rgba(255,255,255,0.8); }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-logos">
+    <span class="logo-sf">SalesFusion</span>
+    <span class="logo-sep">×</span>
+    <div class="logo-client-wrap">
+      <span class="logo-client">Brandfirm</span>
+      <span class="logo-tag">Linkbuilding</span>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="period-badge">📅 15–19 juni 2026 · Week 25</div>
+    <div class="subtitle">Linkbuilding campagne</div>
+  </div>
+</header>
+
+<main class="content">
+
+  <div class="commentaar-card">
+    <h2>Weekcommentaar</h2>
+    <p>
+      Een uitdagende week voor Brandfirm Linkbuilding. We hebben relatief weinig mensen aan de lijn kunnen krijgen — van de 184 contactpogingen kwamen we maar bij 9 mensen daadwerkelijk in gesprek, wat direct zijn weerslag heeft gehad op het aantal afspraken. Met 1 afspraak ligt het resultaat lager dan we willen en gewend zijn. We weten dat er meer in zit en gaan er komende week vol tegenaan. Met 11 terugbelafspraken in de pipeline zijn er genoeg warme contacten om op voort te borduren.
+    </p>
+    <div class="commentaar-author">— Sem, SalesFusion</div>
+  </div>
+
+  <div class="highlight-bar">
+    <div class="highlight-left">
+      <h3>Afspraken deze week</h3>
+      <div class="highlight-num">1</div>
+      <div class="highlight-sub">1 online</div>
+    </div>
+    <div class="highlight-right">
+      <div class="hl-stat">
+        <div class="hl-val">184</div>
+        <div class="hl-label">Pogingen</div>
+      </div>
+      <div class="hl-stat">
+        <div class="hl-val">9</div>
+        <div class="hl-label">Gesprekken</div>
+      </div>
+      <div class="hl-stat">
+        <div class="hl-val">11</div>
+        <div class="hl-label">Terugbel</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-val">184</div>
+      <div class="kpi-label">Contactpogingen</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val">9</div>
+      <div class="kpi-label">In gesprek</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val">11</div>
+      <div class="kpi-label">Terugbelafspraken</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val">14</div>
+      <div class="kpi-label">Geen interesse</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val">22</div>
+      <div class="kpi-label">Neutraal</div>
+    </div>
+  </div>
+
+  <div class="results-card">
+    <h2>Volledig gespreksresultaten</h2>
+
+    <div class="results-group">
+      <div class="results-group-title">✅ Afgehandeld positief</div>
+      <div class="result-row">
+        <span class="result-label">Afspraak online</span>
+        <div class="result-bar-wrap"><div class="result-bar green" style="width:0.5%"></div></div>
+        <span class="result-count">1</span>
+      </div>
+    </div>
+
+    <div class="results-group">
+      <div class="results-group-title">🔄 Opvolging</div>
+      <div class="result-row">
+        <span class="result-label">Geen gehoor</span>
+        <div class="result-bar-wrap"><div class="result-bar" style="width:48.4%"></div></div>
+        <span class="result-count">89</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">In gesprek</span>
+        <div class="result-bar-wrap"><div class="result-bar" style="width:4.9%"></div></div>
+        <span class="result-count">9</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Voicemail</span>
+        <div class="result-bar-wrap"><div class="result-bar" style="width:5.4%"></div></div>
+        <span class="result-count">10</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Terugbelafspraak</span>
+        <div class="result-bar-wrap"><div class="result-bar orange" style="width:6.0%"></div></div>
+        <span class="result-count">11</span>
+      </div>
+    </div>
+
+    <div class="results-group">
+      <div class="results-group-title">❌ Afgehandeld negatief</div>
+      <div class="result-row">
+        <span class="result-label">Geen interesse</span>
+        <div class="result-bar-wrap"><div class="result-bar red" style="width:7.6%"></div></div>
+        <span class="result-count">14</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Buiten doelgroep</span>
+        <div class="result-bar-wrap"><div class="result-bar red" style="width:7.6%"></div></div>
+        <span class="result-count">14</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Buitenland</span>
+        <div class="result-bar-wrap"><div class="result-bar red" style="width:7.6%"></div></div>
+        <span class="result-count">14</span>
+      </div>
+    </div>
+
+    <div class="results-group">
+      <div class="results-group-title">⚪ Afgehandeld neutraal</div>
+      <div class="result-row">
+        <span class="result-label">Foutief nummer</span>
+        <div class="result-bar-wrap"><div class="result-bar gray" style="width:8.2%"></div></div>
+        <span class="result-count">15</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Bedrijf bestaat niet meer</span>
+        <div class="result-bar-wrap"><div class="result-bar gray" style="width:3.8%"></div></div>
+        <span class="result-count">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- AFSPRAKEN -->
+  <div style="font-size:13px;text-transform:uppercase;letter-spacing:1.5px;color:#888;margin:28px 0 16px 4px;">Afspraken &amp; Gespreksverslagen</div>
+
+  <div style="background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.07);margin-bottom:20px;overflow:hidden;">
+    <div style="display:flex;align-items:stretch;">
+      <div style="background:linear-gradient(135deg,#ff6b00,#ff9d3d);color:#fff;padding:20px 22px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:86px;flex-shrink:0;text-align:center;">
+        <div style="font-size:30px;font-weight:900;line-height:1;">26</div>
+        <div style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-top:2px;opacity:0.9;">Juni</div>
+        <div style="font-size:11px;margin-top:6px;opacity:0.8;background:rgba(0,0,0,0.15);padding:2px 8px;border-radius:10px;">14:00</div>
+      </div>
+      <div style="padding:18px 24px;flex:1;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;border-bottom:1px solid #f0f0f0;">
+        <div>
+          <div style="font-size:17px;font-weight:700;color:#1a1a2e;">Michael Brembers</div>
+          <div style="font-size:13px;color:#888;margin-top:2px;">Tabledusud</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px;">
+          <span style="font-size:12px;color:#666;">Paid Advertising + SEO Specialist</span>
+          <span style="font-size:12px;color:#666;">🖥 Online afspraak</span>
+        </div>
+      </div>
+    </div>
+    <div style="padding:20px 24px;">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:#bbb;margin-bottom:10px;">Gespreksverslag</div>
+      <div style="font-size:14px;line-height:1.75;color:#444;">
+        <p style="margin-bottom:10px;">Ik heb gesproken met Michael Brembers van Tabledusud. Hij is Paid Advertising + SEO Specialist en verantwoordelijk voor de online vindbaarheid en marketingactiviteiten.</p>
+        <p style="margin-bottom:10px;">Tijdens het gesprek gaf Michael aan dat zij op dit moment al flink bezig zijn met SEO. Ze werken momenteel samen met Nextlane en linkbuilding is daar ook structureel onderdeel van. De autoriteit van de website is volgens Michael op dit moment goed, maar hij gaf wel aan dat beter vindbaar worden op relevante zoekwoorden altijd welkom is.</p>
+        <p>We hebben besproken dat Brandfirm in een analyse concreet kan laten zien waar kansen liggen op het gebied van vindbaarheid, zoekwoorden en linkbuilding. Michael stond hier positief tegenover en wil graag kijken waar eventuele verbeterpunten of extra kansen liggen binnen hun huidige SEO-aanpak.</p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  Gegenereerd door <strong>SalesFusion</strong> &nbsp;·&nbsp; Week 25 &nbsp;·&nbsp; Brandfirm Linkbuilding campagne
+</footer>
+
+</body>
+</html>
