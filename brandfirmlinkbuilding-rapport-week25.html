@@ -43,7 +43,7 @@
     .kpi-card .kpi-val { font-size: 32px; font-weight: 800; color: #1a1a2e; line-height: 1; }
     .kpi-card .kpi-label { font-size: 12px; color: #888; margin-top: 6px; text-transform: uppercase; letter-spacing: 0.8px; }
 
-    .results-card { background: #fff; border-radius: 16px; padding: 28px 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .results-card { background: #fff; border-radius: 16px; padding: 28px 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 24px; }
     .results-card h2 { font-size: 16px; font-weight: 700; margin-bottom: 20px; color: #1a1a2e; }
     .results-group { margin-bottom: 24px; }
     .results-group-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; color: #aaa; margin-bottom: 10px; }
@@ -56,6 +56,24 @@
     .result-bar.red { background: #ef4444; }
     .result-bar.gray { background: #9ca3af; }
     .result-count { font-size: 13px; font-weight: 600; color: #1a1a2e; width: 32px; text-align: right; }
+
+    .section-title { font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; color: #888; margin-bottom: 16px; padding-left: 4px; }
+    .afspraak-card { background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 20px; overflow: hidden; }
+    .afspraak-header { display: flex; align-items: stretch; }
+    .date-block { background: linear-gradient(135deg, #ff6b00, #ff9d3d); color: #fff; padding: 20px 22px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 86px; flex-shrink: 0; text-align: center; }
+    .date-day { font-size: 30px; font-weight: 900; line-height: 1; }
+    .date-month { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; opacity: 0.9; }
+    .date-time { font-size: 11px; margin-top: 6px; opacity: 0.8; background: rgba(0,0,0,0.15); padding: 2px 8px; border-radius: 10px; }
+    .afspraak-info { padding: 18px 24px; flex: 1; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid #f0f0f0; }
+    .afspraak-naam { font-size: 17px; font-weight: 700; color: #1a1a2e; }
+    .afspraak-bedrijf { font-size: 13px; color: #888; margin-top: 2px; }
+    .afspraak-contact { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; }
+    .contact-item { font-size: 12px; color: #666; }
+    .verslag-body { padding: 20px 24px; }
+    .verslag-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; color: #bbb; margin-bottom: 10px; }
+    .verslag-tekst { font-size: 14px; line-height: 1.75; color: #444; }
+    .verslag-tekst p { margin-bottom: 10px; }
+    .verslag-tekst p:last-child { margin-bottom: 0; }
 
     .footer { background: #0d1b3e; color: rgba(255,255,255,0.5); text-align: center; padding: 20px; font-size: 12px; }
     .footer strong { color: rgba(255,255,255,0.8); }
@@ -83,7 +101,7 @@
   <div class="commentaar-card">
     <h2>Weekcommentaar</h2>
     <p>
-      Een uitdagende week voor Brandfirm Linkbuilding. We hebben relatief weinig mensen aan de lijn kunnen krijgen — van de 184 contactpogingen kwamen we maar bij 9 mensen daadwerkelijk in gesprek, wat direct zijn weerslag heeft gehad op het aantal afspraken. Met 1 afspraak ligt het resultaat lager dan we willen en gewend zijn. We weten dat er meer in zit en gaan er komende week vol tegenaan. Met 11 terugbelafspraken in de pipeline zijn er genoeg warme contacten om op voort te borduren.
+      Een uitdagende week voor Brandfirm Linkbuilding. We hebben relatief weinig mensen aan de lijn kunnen krijgen — van de 184 contactpogingen kwamen we bij 35 mensen daadwerkelijk in gesprek, wat zijn weerslag heeft gehad op het aantal afspraken. Met 1 afspraak ligt het resultaat lager dan we willen en gewend zijn. We weten dat er meer in zit en gaan er komende week vol tegenaan. Met 11 terugbelafspraken in de pipeline zijn er genoeg warme contacten om op voort te borduren.
     </p>
     <div class="commentaar-author">— Sem, SalesFusion</div>
   </div>
@@ -100,7 +118,7 @@
         <div class="hl-label">Pogingen</div>
       </div>
       <div class="hl-stat">
-        <div class="hl-val">9</div>
+        <div class="hl-val">35</div>
         <div class="hl-label">Gesprekken</div>
       </div>
       <div class="hl-stat">
@@ -116,7 +134,7 @@
       <div class="kpi-label">Contactpogingen</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-val">9</div>
+      <div class="kpi-val">35</div>
       <div class="kpi-label">In gesprek</div>
     </div>
     <div class="kpi-card">
@@ -203,32 +221,31 @@
     </div>
   </div>
 
-  <!-- AFSPRAKEN -->
-  <div style="font-size:13px;text-transform:uppercase;letter-spacing:1.5px;color:#888;margin:28px 0 16px 4px;">Afspraken &amp; Gespreksverslagen</div>
+  <div class="section-title">Afspraken &amp; Gespreksverslagen</div>
 
-  <div style="background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.07);margin-bottom:20px;overflow:hidden;">
-    <div style="display:flex;align-items:stretch;">
-      <div style="background:linear-gradient(135deg,#ff6b00,#ff9d3d);color:#fff;padding:20px 22px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:86px;flex-shrink:0;text-align:center;">
-        <div style="font-size:30px;font-weight:900;line-height:1;">26</div>
-        <div style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-top:2px;opacity:0.9;">Juni</div>
-        <div style="font-size:11px;margin-top:6px;opacity:0.8;background:rgba(0,0,0,0.15);padding:2px 8px;border-radius:10px;">14:00</div>
+  <div class="afspraak-card">
+    <div class="afspraak-header">
+      <div class="date-block">
+        <div class="date-day">26</div>
+        <div class="date-month">Juni</div>
+        <div class="date-time">14:00</div>
       </div>
-      <div style="padding:18px 24px;flex:1;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;border-bottom:1px solid #f0f0f0;">
+      <div class="afspraak-info">
         <div>
-          <div style="font-size:17px;font-weight:700;color:#1a1a2e;">Michael Brembers</div>
-          <div style="font-size:13px;color:#888;margin-top:2px;">Tabledusud</div>
+          <div class="afspraak-naam">Michael Brembers</div>
+          <div class="afspraak-bedrijf">Tabledusud</div>
         </div>
-        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px;">
-          <span style="font-size:12px;color:#666;">Paid Advertising + SEO Specialist</span>
-          <span style="font-size:12px;color:#666;">🖥 Online afspraak</span>
+        <div class="afspraak-contact">
+          <span class="contact-item">Paid Advertising + SEO Specialist</span>
+          <span class="contact-item">🖥 Online afspraak</span>
         </div>
       </div>
     </div>
-    <div style="padding:20px 24px;">
-      <div style="font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:#bbb;margin-bottom:10px;">Gespreksverslag</div>
-      <div style="font-size:14px;line-height:1.75;color:#444;">
-        <p style="margin-bottom:10px;">Ik heb gesproken met Michael Brembers van Tabledusud. Hij is Paid Advertising + SEO Specialist en verantwoordelijk voor de online vindbaarheid en marketingactiviteiten.</p>
-        <p style="margin-bottom:10px;">Tijdens het gesprek gaf Michael aan dat zij op dit moment al flink bezig zijn met SEO. Ze werken momenteel samen met Nextlane en linkbuilding is daar ook structureel onderdeel van. De autoriteit van de website is volgens Michael op dit moment goed, maar hij gaf wel aan dat beter vindbaar worden op relevante zoekwoorden altijd welkom is.</p>
+    <div class="verslag-body">
+      <div class="verslag-label">Gespreksverslag</div>
+      <div class="verslag-tekst">
+        <p>Ik heb gesproken met Michael Brembers van Tabledusud. Hij is Paid Advertising + SEO Specialist en verantwoordelijk voor de online vindbaarheid en marketingactiviteiten.</p>
+        <p>Tijdens het gesprek gaf Michael aan dat zij op dit moment al flink bezig zijn met SEO. Ze werken momenteel samen met Nextlane en linkbuilding is daar ook structureel onderdeel van. De autoriteit van de website is volgens Michael op dit moment goed, maar hij gaf wel aan dat beter vindbaar worden op relevante zoekwoorden altijd welkom is.</p>
         <p>We hebben besproken dat Brandfirm in een analyse concreet kan laten zien waar kansen liggen op het gebied van vindbaarheid, zoekwoorden en linkbuilding. Michael stond hier positief tegenover en wil graag kijken waar eventuele verbeterpunten of extra kansen liggen binnen hun huidige SEO-aanpak.</p>
       </div>
     </div>
